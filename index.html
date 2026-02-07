@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infalex | The AI Hub of the Future</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary: #2563eb;       /* Vibrant Blue */
+            --primary-dark: #1e40af;  /* Darker Blue for Hover */
+            --secondary: #3b82f6;     /* Lighter Blue */
+            --bg-color: #f8fafc;      /* Very Light Blue/Grey Background */
+            --surface: #ffffff;       /* White Cards */
+            --text-main: #0f172a;     /* Dark Slate for Headings */
+            --text-muted: #64748b;    /* Muted Grey for body text */
+            --border: #e2e8f0;        /* Subtle Borders */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-hover: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            padding: 120px 20px 80px;
+            text-align: center;
+            background: radial-gradient(circle at top center, #e0f2fe 0%, transparent 40%);
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: #dbeafe;
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid #bfdbfe;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* --- GRID CONTAINER --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 80px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            /* Staggered Animation for Grid */
+            opacity: 0;
+            animation: fadeUp 1s ease-out 0.3s forwards;
+        }
+
+        /* --- CARD DESIGN --- */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            cursor: default;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: #bfdbfe;
+        }
+
+        .card-header { margin-bottom: 16px; }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        /* --- STATUS & ACTION --- */
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            border-top: 1px solid var(--bg-color);
+            padding-top: 20px;
+        }
+
+        .status {
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        
+        .status.dev { background: #fffbeb; color: #b45309; border: 1px solid #fcd34d; }
+        .status.live { background: #f0fdf4; color: #15803d; border: 1px solid #86efac; }
+
+        /* Animated Arrow */
+        .arrow-icon {
+            color: var(--primary);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .card:hover .arrow-icon {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: auto;
+            padding: 60px 20px;
+            text-align: center;
+            background: #fff;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p { color: var(--text-muted); font-size: 0.95rem; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        footer a:hover { text-decoration: underline; }
+
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero { padding: 80px 20px 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="badge">System v2.0 Online</div>
+        <h1>
+            Unified Intelligence <br>
+            <span>Hub of the Future</span>
+        </h1>
+        <p class="subtitle">
+            Infalex provides a central access point for next-generation AI utilities, 
+            developer tools, and automated workflows.
+        </p>
+    </section>
+
+    <div class="container">
+        <div class="grid">
+            
+            <div class="card">
+                <div class="card-header">
+                    <span class="tag">Career AI</span>
+                    <h3>Resume Matcher</h3>
+                    <p>Smart analysis to match your resume with the perfect job description using LLMs.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="status dev">In Development</span>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="tag">Knowledge Base</span>
+                    <h3>DocuMind RAG</h3>
+                    <p>Chat with your PDF documents and extract answers instantly using vector search.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="status dev">In Development</span>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="tag">Security</span>
+                    <h3>PhishGuard</h3>
+                    <p>Real-time detection of malicious URLs to keep your browsing data safe.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="status dev">In Development</span>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="tag">Developer Tools</span>
+                    <h3>CodeFixer</h3>
+                    <p>AI-powered debugger that explains errors and suggests optimized fixes.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="status dev">In Development</span>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="tag">Agriculture</span>
+                    <h3>AgroScan</h3>
+                    <p>Detect crop diseases from images and get instant remedy suggestions.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="status dev">In Development</span>
+                    <span class="arrow-icon">&rarr;</span>
+                </div>
+            </div>
+
+            <a href="https://tools.infalex.com" style="text-decoration: none;">
+                <div class="card" style="border-color: var(--primary);">
+                    <div class="card-header">
+                        <span class="tag">Utilities</span>
+                        <h3>Infalex Tools</h3>
+                        <p>A suite of essential non-AI utilities for everyday tasks. Available now.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="status live">Live & Operational</span>
+                        <span class="arrow-icon" style="opacity: 1;">&rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Infalex Ecosystem. All Systems Operational.</p>
+        <p style="margin-top: 10px;">Read our engineering logs at <a href="https://blog.infalex.com">Infalex Labs</a>.</p>
+    </footer>
+
+</body>
+</html>
