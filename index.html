@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-162KWK3Q3L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-162KWK3Q3L');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infalex | The AI Hub of the Future</title>
     <style>
         /* --- CSS VARIABLES & RESET --- */
         :root {
-            --primary: #2563eb;       /* Vibrant Blue */
-            --primary-dark: #1e40af;  /* Darker Blue for Hover */
-            --secondary: #3b82f6;     /* Lighter Blue */
-            --bg-color: #f8fafc;      /* Very Light Blue/Grey Background */
-            --surface: #ffffff;       /* White Cards */
-            --text-main: #0f172a;     /* Dark Slate for Headings */
-            --text-muted: #64748b;    /* Muted Grey for body text */
-            --border: #e2e8f0;        /* Subtle Borders */
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-hover: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --primary: #2563eb;
+            /* Vibrant Blue */
+            --primary-dark: #1e40af;
+            /* Darker Blue for Hover */
+            --secondary: #3b82f6;
+            /* Lighter Blue */
+            --bg-color: #f8fafc;
+            /* Very Light Blue/Grey Background */
+            --surface: #ffffff;
+            /* White Cards */
+            --text-main: #0f172a;
+            /* Dark Slate for Headings */
+            --text-muted: #64748b;
+            /* Muted Grey for body text */
+            --border: #e2e8f0;
+            /* Subtle Borders */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
         body {
             background-color: var(--bg-color);
@@ -32,8 +55,15 @@
 
         /* --- ANIMATIONS --- */
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* --- HERO SECTION --- */
@@ -118,7 +148,9 @@
             border-color: #bfdbfe;
         }
 
-        .card-header { margin-bottom: 16px; }
+        .card-header {
+            margin-bottom: 16px;
+        }
 
         .tag {
             font-size: 0.75rem;
@@ -163,9 +195,18 @@
             padding: 4px 12px;
             border-radius: 20px;
         }
-        
-        .status.dev { background: #fffbeb; color: #b45309; border: 1px solid #fcd34d; }
-        .status.live { background: #f0fdf4; color: #15803d; border: 1px solid #86efac; }
+
+        .status.dev {
+            background: #fffbeb;
+            color: #b45309;
+            border: 1px solid #fcd34d;
+        }
+
+        .status.live {
+            background: #f0fdf4;
+            color: #15803d;
+            border: 1px solid #86efac;
+        }
 
         /* Animated Arrow */
         .arrow-icon {
@@ -190,17 +231,34 @@
             border-top: 1px solid var(--border);
         }
 
-        footer p { color: var(--text-muted); font-size: 0.95rem; }
-        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
-        footer a:hover { text-decoration: underline; }
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
 
         /* Responsive Fixes */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .hero { padding: 80px 20px 60px; }
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                padding: 80px 20px 60px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <section class="hero">
@@ -210,14 +268,14 @@
             <span>Hub of the Future</span>
         </h1>
         <p class="subtitle">
-            Infalex provides a central access point for next-generation AI utilities, 
+            Infalex provides a central access point for next-generation AI utilities,
             developer tools, and automated workflows.
         </p>
     </section>
 
     <div class="container">
         <div class="grid">
-            
+
             <div class="card">
                 <div class="card-header">
                     <span class="tag">Career AI</span>
@@ -297,8 +355,10 @@
 
     <footer>
         <p>&copy; 2026 Infalex Ecosystem. All Systems Operational.</p>
-        <p style="margin-top: 10px;">Read our engineering logs at <a href="https://blog.infalex.com">Infalex Labs</a>.</p>
+        <p style="margin-top: 10px;">Read our engineering logs at <a href="https://blog.infalex.com">Infalex Labs</a>.
+        </p>
     </footer>
 
 </body>
+
 </html>
