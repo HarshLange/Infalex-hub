@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,132 +9,155 @@
 </head>
 
 <body>
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="index.html" class="nav-logo">Infalex<span>.</span></a>
-        <div class="menu-toggle">☰</div>
-        <ul class="nav-links">
-             <li><a href="index.html" class="active">Home</a></li>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Infalex<span>.</span></a>
+            <div class="menu-toggle">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="pricing.html" class="active">Pricing</a></li>
                 <li><a href="https://tools.infalex.com">Tools</a></li>
                 <li><a href="https://blog.infalex.com">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </div>
-</nav>
-
-<header class="page-header">
-    <h1>Pricing & Plans</h1>
-    <p class="subtitle">Simple, transparent pricing for AI-powered resume analysis.</p>
-</header>
-
-<main class="content-section">
-
-    <h2>Product: AI Resume Analyzer & Job Matcher</h2>
-    <p>
-        Infalex provides an AI-powered Resume Analyzer that compares resumes with job descriptions,
-        generates match scores, highlights gaps, and suggests improvements.
-        The product is currently in late-stage development and will launch publicly soon.
-    </p>
-
-    <h2>How Credits Work</h2>
-    <ul>
-        <li>1 credit = 1 resume analysis or 1 job-description match</li>
-        <li>Credits are deducted instantly after processing</li>
-        <li>Unused credits remain valid unless specified otherwise</li>
-        <li>Unlimited plans are subject to fair usage limits</li>
-    </ul>
-
-    <h2>Pricing – India (INR)</h2>
-    <table style="width:100%; max-width:700px; border-collapse: collapse;">
-        <tr>
-            <th>Plan</th>
-            <th>Price</th>
-            <th>Usage</th>
-        </tr>
-        <tr>
-            <td>Starter</td>
-            <td>₹49</td>
-            <td>10 Credits</td>
-        </tr>
-        <tr>
-            <td>Pro</td>
-            <td>₹149</td>
-            <td>50 Credits</td>
-        </tr>
-        <tr>
-            <td>Unlimited Weekly</td>
-            <td>₹199 / week</td>
-            <td>Unlimited Scans (Fair Use)</td>
-        </tr>
-    </table>
-
-    <h2>Pricing – International (USD)</h2>
-    <table style="width:100%; max-width:700px; border-collapse: collapse;">
-        <tr>
-            <th>Plan</th>
-            <th>Price</th>
-            <th>Usage</th>
-        </tr>
-        <tr>
-            <td>Starter</td>
-            <td>$1.99</td>
-            <td>10 Credits</td>
-        </tr>
-        <tr>
-            <td>Pro</td>
-            <td>$4.99</td>
-            <td>50 Credits</td>
-        </tr>
-        <tr>
-            <td>Unlimited Weekly</td>
-            <td>$6.99 / week</td>
-            <td>Unlimited Scans (Fair Use)</td>
-        </tr>
-    </table>
-
-    <h2>Refund Guidelines</h2>
-    <p>
-        Infalex provides digital AI processing services. Due to real-time compute costs,
-        payments are non-refundable once credits are consumed or processing has started.
-    </p>
-    <p>
-        Refund exceptions may be reviewed only in cases of verified billing errors or
-        prolonged technical failures, at Infalex’s discretion.
-    </p>
-
-    <h2>Launch Timeline</h2>
-    <ul>
-        <li>Beta Testing: Ongoing</li>
-        <li>Public Launch: Coming Soon (2026)</li>
-        <li>Additional AI tools: Planned post-launch</li>
-    </ul>
-
-</main>
-
-<footer>
-    <div class="footer-container">
-        <div class="footer-col">
-            <h4>Infalex</h4>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">
-                AI-powered software utilities built for real-world use cases.
-            </p>
-        </div>
-        <div class="footer-col">
-            <h4>Legal</h4>
-            <ul>
-                <li><a href="privacy.html">Privacy Policy</a></li>
-                <li><a href="terms.html">Terms of Service</a></li>
-                <li><a href="refund.html">Refund Policy</a></li>
             </ul>
         </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 Infalex Ecosystem. All Rights Reserved.</p>
-    </div>
-</footer>
+    </nav>
 
-<script src="assets/js/script.js"></script>
+    <header class="page-header">
+        <h1>Pricing & Plans</h1>
+        <p class="subtitle">Simple, transparent pricing for AI-powered resume analysis.</p>
+    </header>
+
+    <main class="content-section">
+
+        <h2>Product: AI Resume Analyzer & Job Matcher</h2>
+        <p>
+            Infalex provides an AI-powered Resume Analyzer that compares resumes with job descriptions,
+            generates match scores, highlights gaps, and suggests improvements.
+            The product is currently in late-stage development and will launch publicly soon.
+        </p>
+
+        <h2>How Credits Work</h2>
+        <ul>
+            <li>1 credit = 1 resume analysis or 1 job-description match</li>
+            <li>Credits are deducted instantly after processing</li>
+            <li>Unused credits remain valid unless specified otherwise</li>
+            <li>Unlimited plans are subject to fair usage limits</li>
+        </ul>
+
+        <!-- INDIA PRICING -->
+        <h2>Pricing – India (INR)</h2>
+        <div class="pricing-table-wrapper">
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>Price</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Starter</td>
+                        <td>₹49</td>
+                        <td>10 Credits</td>
+                    </tr>
+                    <tr>
+                        <td>Pro</td>
+                        <td>₹149</td>
+                        <td>50 Credits</td>
+                    </tr>
+                    <tr>
+                        <td>Unlimited Weekly</td>
+                        <td>₹199 / week</td>
+                        <td>Unlimited Scans (Fair Use)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- INTERNATIONAL PRICING -->
+        <h2>Pricing – International (USD)</h2>
+        <div class="pricing-table-wrapper">
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>Price</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Starter</td>
+                        <td>$1.99</td>
+                        <td>10 Credits</td>
+                    </tr>
+                    <tr>
+                        <td>Pro</td>
+                        <td>$4.99</td>
+                        <td>50 Credits</td>
+                    </tr>
+                    <tr>
+                        <td>Unlimited Weekly</td>
+                        <td>$6.99 / week</td>
+                        <td>Unlimited Scans (Fair Use)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="pricing-note">
+        <ul> 
+            <li>Credits are consumed per resume scan or job match.
+            Unlimited plans are subject to fair usage.</li>
+            <li>Payments provide access to digital AI services. No physical goods are shipped.</li>
+            </p>
+            </ul>
+
+            <h2>Refund Guidelines</h2>
+            <p>
+                Infalex provides digital AI processing services. Due to real-time compute costs,
+                payments are non-refundable once credits are consumed or processing has started.
+            </p>
+            <p>
+                Refund exceptions may be reviewed only in cases of verified billing errors or
+                prolonged technical failures, at Infalex’s discretion.
+            </p>
+
+            <h2>Launch Timeline</h2>
+            <ul>
+                <li>Beta Testing: Ongoing</li>
+                <li>Public Launch: Coming Soon (Q1 2026)</li>
+                <li>Additional AI tools: Planned post-launch</li>
+            </ul>
+
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Infalex</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    AI-powered software utilities built for real-world use cases.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="refund.html">Refund Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Infalex Ecosystem. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>

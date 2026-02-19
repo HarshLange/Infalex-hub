@@ -340,3 +340,33 @@ footer {
     color: #15803d;
     border: 1px solid #86efac;
 }
+
+.pricing-table-wrapper {
+    overflow-x: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.pricing-table {
+    width: 100%;
+    max-width: 700px;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.pricing-table th,
+.pricing-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.95rem;
+}
+
+.pricing-table th {
+    font-weight: 600;
+    color: #111827;
+}
+
+.pricing-table tbody tr:last-child td {
+    border-bottom: none;
+}
