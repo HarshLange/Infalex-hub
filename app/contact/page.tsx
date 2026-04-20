@@ -195,7 +195,7 @@ export default function ContactPage() {
                     <div className="cp-info-icon">⌨️</div>
                     <div>
                       <p className="cp-info-label">GitHub</p>
-                      <p className="cp-info-value"><a href="https://github.com/infalex" target="_blank" rel="noreferrer">github.com/infalex</a></p>
+                      <p className="cp-info-value"><a href="https://github.com/infalexhq" target="_blank" rel="noreferrer">github.com/infalex</a></p>
                     </div>
                   </div>
                   <div className="cp-info-card">

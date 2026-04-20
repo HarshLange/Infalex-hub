@@ -8,7 +8,10 @@ import "./globals.css";
 const figtree = Figtree({ subsets: ["latin"], weight: ["300", "400", "500", "600"] });
 
 export const metadata: Metadata = {
-  title: "Infalex | The AI Hub of the Future",
+  title: {
+    default: "Infalex | The AI Hub of the Future",
+    template: "%s | Infalex",
+  } ,
   description: "Infalex is an MSME-registered platform providing next-generation AI utilities, including an AI Resume Matcher and developer tools.",
   keywords: ["AI tools", "resume matcher","SaaS", "developer utilities","India MSME", "Developer Tools", "Infalex", "AI hub", "career AI", "productivity tools"],
   authors: [{ name: "Infalex Team", url: "https://www.infalex.com" }],
