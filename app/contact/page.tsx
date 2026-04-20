@@ -1,172 +1,270 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 
 export default function ContactPage() {
-    const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [formState, setFormState] = useState({ name: "", email: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
 
-    // Simulate loading state for the skeleton loader
-    useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 800);
-        return () => clearTimeout(timer);
-    }, []);
+  useEffect(() => {
+    const t = setTimeout(() => setIsLoading(false), 600);
+    return () => clearTimeout(t);
+  }, []);
 
-    return (
-        <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
-            {/* Hero Section */}
-            <header className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 to-white -z-10" />
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
-                        Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">Touch</span>
-                    </h1>
-                    <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium">
-                        Have a bug report, feature request, or just want to say hi? We're here to help you build the future.
-                    </p>
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:wght@300;400;500;600&display=swap');
+        .cp { min-height:100vh; background:#05050a; font-family:'Figtree',sans-serif; color:#f0f0f8; }
+
+        .cp-hero {
+          position:relative; padding:80px 24px 64px; text-align:center;
+          border-bottom:1px solid rgba(255,255,255,0.07); overflow:hidden;
+        }
+        .cp-hero-bg {
+          position:absolute; inset:0; pointer-events:none;
+          background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59,107,255,0.14) 0%, transparent 60%),
+            radial-gradient(ellipse 30% 30% at 20% 80%, rgba(0,212,170,0.05) 0%, transparent 50%);
+        }
+        .cp-hero-grid {
+          position:absolute; inset:0; pointer-events:none;
+          background-image: linear-gradient(rgba(59,107,255,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59,107,255,0.04) 1px, transparent 1px);
+          background-size:60px 60px;
+          mask-image:radial-gradient(ellipse 70% 60% at 50% 0%, black 0%, transparent 70%);
+        }
+        .cp-hero-inner { position:relative; z-index:1; max-width:680px; margin:0 auto; }
+
+        .cp-eyebrow {
+          display:inline-flex; align-items:center; gap:8px;
+          font-size:11px; font-weight:600; letter-spacing:0.14em;
+          text-transform:uppercase; color:#00d4aa; margin-bottom:24px;
+        }
+        .cp-eyebrow-dot { width:6px; height:6px; border-radius:50%; background:#00d4aa; animation:cp-pulse 2s infinite; }
+        @keyframes cp-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
+
+        .cp-title {
+          font-family:'Syne',sans-serif;
+          font-size:clamp(40px,7vw,68px); font-weight:800; line-height:0.95;
+          letter-spacing:-0.04em; color:#f0f0f8; margin-bottom:20px;
+        }
+        .cp-title span {
+          background:linear-gradient(135deg,#3b6bff 0%,#00d4aa 100%);
+          -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+        .cp-subtitle { font-size:17px; font-weight:300; color:rgba(240,240,248,0.5); line-height:1.7; }
+
+        .cp-main { max-width:1040px; margin:0 auto; padding:64px 24px 96px; }
+        .cp-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:40px; align-items:start; }
+
+        /* Info side */
+        .cp-info-title {
+          font-family:'Syne',sans-serif; font-size:22px; font-weight:700;
+          letter-spacing:-0.02em; color:#f0f0f8; margin-bottom:8px;
+        }
+        .cp-info-sub { font-size:14px; color:rgba(240,240,248,0.4); margin-bottom:28px; font-weight:300; }
+
+        .cp-cards { display:flex; flex-direction:column; gap:12px; }
+
+        .cp-info-card {
+          display:flex; align-items:flex-start; gap:16px;
+          padding:18px 20px; background:#0f0f1a;
+          border:1px solid rgba(255,255,255,0.07); border-radius:16px;
+          transition:border-color 0.2s, background 0.2s;
+        }
+        .cp-info-card:hover { border-color:rgba(255,255,255,0.12); background:#141422; }
+
+        .cp-info-icon {
+          width:40px; height:40px; border-radius:12px;
+          background:rgba(59,107,255,0.12); border:1px solid rgba(59,107,255,0.2);
+          display:flex; align-items:center; justify-content:center;
+          font-size:18px; flex-shrink:0;
+          transition:background 0.2s;
+        }
+        .cp-info-card:hover .cp-info-icon { background:rgba(59,107,255,0.2); }
+
+        .cp-info-label { font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:rgba(240,240,248,0.3); margin-bottom:4px; }
+        .cp-info-value { font-size:14px; color:rgba(240,240,248,0.65); }
+        .cp-info-value a { color:#7da4ff; text-decoration:none; }
+        .cp-info-value a:hover { color:#b8ccff; }
+
+        /* Form side */
+        .cp-form-card {
+          background:#0f0f1a; border:1px solid rgba(255,255,255,0.07);
+          border-radius:24px; padding:40px;
+          position:relative; overflow:hidden;
+        }
+        .cp-form-card::before {
+          content:''; position:absolute; top:0; left:0; right:0; height:1px;
+          background:linear-gradient(90deg,transparent,rgba(59,107,255,0.5),rgba(0,212,170,0.3),transparent);
+        }
+
+        .cp-form-title {
+          font-family:'Syne',sans-serif; font-size:22px; font-weight:700;
+          color:#f0f0f8; margin-bottom:28px; letter-spacing:-0.02em;
+        }
+
+        .cp-form { display:flex; flex-direction:column; gap:16px; }
+
+        .cp-label { display:block; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:rgba(240,240,248,0.3); margin-bottom:8px; }
+
+        .cp-input, .cp-textarea {
+          width:100%; padding:14px 16px;
+          background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
+          border-radius:12px; color:#f0f0f8; font-size:15px;
+          font-family:'Figtree',sans-serif; font-weight:300;
+          outline:none; transition:border-color 0.2s, background 0.2s;
+        }
+        .cp-input::placeholder, .cp-textarea::placeholder { color:rgba(240,240,248,0.2); }
+        .cp-input:focus, .cp-textarea:focus {
+          border-color:rgba(59,107,255,0.5); background:rgba(59,107,255,0.06);
+        }
+        .cp-textarea { resize:none; min-height:140px; }
+
+        .cp-submit {
+          display:flex; align-items:center; justify-content:center; gap:8px;
+          width:100%; padding:15px 24px;
+          background:#3b6bff; color:white;
+          font-size:15px; font-weight:600; font-family:'Figtree',sans-serif;
+          border:none; border-radius:12px; cursor:pointer;
+          transition:all 0.2s; box-shadow:0 0 24px rgba(59,107,255,0.25);
+          margin-top:4px;
+        }
+        .cp-submit:hover { transform:translateY(-1px); box-shadow:0 0 40px rgba(59,107,255,0.4); }
+
+        .cp-success {
+          display:flex; flex-direction:column; align-items:center; justify-content:center;
+          gap:16px; padding:40px 20px; text-align:center;
+        }
+        .cp-success-icon { font-size:48px; }
+        .cp-success-title { font-family:'Syne',sans-serif; font-size:22px; font-weight:700; color:#f0f0f8; }
+        .cp-success-text { font-size:15px; color:rgba(240,240,248,0.5); font-weight:300; }
+
+        /* Skeleton */
+        .cp-skeleton { animation:cp-shimmer 1.5s infinite; border-radius:16px; background:linear-gradient(90deg,#0f0f1a 25%,#141422 50%,#0f0f1a 75%); background-size:200% 100%; }
+        @keyframes cp-shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+        @media(max-width:800px){ .cp-grid{grid-template-columns:1fr;} }
+        @media(max-width:500px){ .cp-form-card{padding:28px 20px;} }
+      `}</style>
+
+      <div className="cp">
+        <header className="cp-hero">
+          <div className="cp-hero-bg" />
+          <div className="cp-hero-grid" />
+          <div className="cp-hero-inner">
+            <div className="cp-eyebrow"><span className="cp-eyebrow-dot" />Reach Out</div>
+            <h1 className="cp-title">Get in <span>Touch</span></h1>
+            <p className="cp-subtitle">Bug report, feature request, or just want to say hi? We're here.</p>
+          </div>
+        </header>
+
+        <main className="cp-main">
+          {isLoading ? (
+            <div className="cp-grid">
+              <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
+                <div className="cp-skeleton" style={{ height:24, width:"60%", marginBottom:8 }} />
+                <div className="cp-skeleton" style={{ height:80 }} />
+                <div className="cp-skeleton" style={{ height:80 }} />
+                <div className="cp-skeleton" style={{ height:80 }} />
+                <div className="cp-skeleton" style={{ height:80 }} />
+              </div>
+              <div className="cp-skeleton" style={{ height:420, borderRadius:24 }} />
+            </div>
+          ) : (
+            <div className="cp-grid">
+              {/* Info */}
+              <div>
+                <h2 className="cp-info-title">Contact Information</h2>
+                <p className="cp-info-sub">Reach us through any of these channels.</p>
+                <div className="cp-cards">
+                  <div className="cp-info-card">
+                    <div className="cp-info-icon">✉️</div>
+                    <div>
+                      <p className="cp-info-label">Email Support</p>
+                      <p className="cp-info-value"><a href="mailto:support@infalex.com">support@infalex.com</a></p>
+                    </div>
+                  </div>
+                  <div className="cp-info-card">
+                    <div className="cp-info-icon">⌨️</div>
+                    <div>
+                      <p className="cp-info-label">GitHub</p>
+                      <p className="cp-info-value"><a href="https://github.com/infalex" target="_blank" rel="noreferrer">github.com/infalex</a></p>
+                    </div>
+                  </div>
+                  <div className="cp-info-card">
+                    <div className="cp-info-icon">🏢</div>
+                    <div>
+                      <p className="cp-info-label">Business Type</p>
+                      <p className="cp-info-value">MSME Registered SaaS · India</p>
+                    </div>
+                  </div>
+                  <div className="cp-info-card">
+                    <div className="cp-info-icon">🕐</div>
+                    <div>
+                      <p className="cp-info-label">Support Hours</p>
+                      <p className="cp-info-value">Mon – Fri, 10:00 AM – 6:00 PM IST</p>
+                    </div>
+                  </div>
                 </div>
-            </header>
+              </div>
 
-            {/* Main Content Area */}
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-                {isLoading ? (
-                    /* Skeleton Loader */
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 animate-pulse">
-                        <div className="space-y-6">
-                            <div className="h-8 bg-slate-200 rounded w-1/3 mb-8"></div>
-                            {[1, 2, 3, 4].map((i) => (
-                                <div key={i} className="flex gap-4 items-center">
-                                    <div className="w-12 h-12 bg-slate-200 rounded-xl"></div>
-                                    <div className="h-4 bg-slate-200 rounded w-1/2"></div>
-                                </div>
-                            ))}
-                        </div>
-                        <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
-                            <div className="h-8 bg-slate-200 rounded w-1/4 mb-6"></div>
-                            <div className="space-y-4">
-                                <div className="h-12 bg-slate-200 rounded-xl w-full"></div>
-                                <div className="h-12 bg-slate-200 rounded-xl w-full"></div>
-                                <div className="h-32 bg-slate-200 rounded-xl w-full"></div>
-                                <div className="h-12 bg-blue-200 rounded-xl w-full mt-6"></div>
-                            </div>
-                        </div>
-                    </div>
+              {/* Form */}
+              <div className="cp-form-card">
+                {submitted ? (
+                  <div className="cp-success">
+                    <span className="cp-success-icon">✅</span>
+                    <h3 className="cp-success-title">Message sent!</h3>
+                    <p className="cp-success-text">We'll get back to you within 1–2 business days at your email address.</p>
+                  </div>
                 ) : (
-                    /* Actual Content */
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-
-                        {/* Contact Information Cards */}
-                        <div className="space-y-8">
-                            <div>
-                                <h2 className="text-2xl font-bold tracking-tight text-slate-900 mb-2">Contact Information</h2>
-                                <p className="text-slate-600">For support inquiries, please reach out to us directly through any of these channels.</p>
-                            </div>
-
-                            <div className="space-y-4">
-                                {/* Email Card */}
-                                <div className="group flex items-start gap-4 p-4 rounded-2xl border border-slate-100 bg-white hover:border-blue-100 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300">
-                                    <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p className="text-sm font-semibold text-slate-900">Email Support</p>
-                                        <a href="mailto:support@infalex.com" className="text-blue-600 hover:text-blue-700 font-medium transition-colors">support@infalex.com</a>
-                                    </div>
-                                </div>
-
-                                {/* GitHub Card */}
-                                <div className="group flex items-start gap-4 p-4 rounded-2xl border border-slate-100 bg-white hover:border-blue-100 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300">
-                                    <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                            <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p className="text-sm font-semibold text-slate-900">GitHub</p>
-                                        <a href="https://github.com/infalex" target="_blank" rel="noreferrer" className="text-blue-600 hover:text-blue-700 font-medium transition-colors">github.com/infalex</a>
-                                    </div>
-                                </div>
-
-                                {/* Business Details */}
-                                <div className="group flex items-start gap-4 p-4 rounded-2xl border border-slate-100 bg-white hover:border-blue-100 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300">
-                                    <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p className="text-sm font-semibold text-slate-900">Business Type</p>
-                                        <p className="text-slate-600">MSME Registered SaaS</p>
-                                    </div>
-                                </div>
-
-                                {/* Support Hours */}
-                                <div className="group flex items-start gap-4 p-4 rounded-2xl border border-slate-100 bg-white hover:border-blue-100 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300">
-                                    <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p className="text-sm font-semibold text-slate-900">Support Hours</p>
-                                        <p className="text-slate-600">Mon – Fri, 10:00 AM – 6:00 PM IST</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Contact Form Card */}
-                        <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 relative group">
-                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-3xl pointer-events-none" />
-                            <h2 className="text-2xl font-bold tracking-tight text-slate-900 mb-6 relative z-10">Send a Message</h2>
-
-                            <form className="space-y-5 relative z-10" onSubmit={(e) => e.preventDefault()}>
-                                <div>
-                                    <label htmlFor="name" className="sr-only">Your Name</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        placeholder="Your Name"
-                                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="email" className="sr-only">Your Email</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        placeholder="Your Email"
-                                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="message" className="sr-only">How can we help?</label>
-                                    <textarea
-                                        id="message"
-                                        rows={5}
-                                        placeholder="How can we help?"
-                                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
-                                        required
-                                    ></textarea>
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="w-full py-3.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-md hover:shadow-xl hover:shadow-blue-500/20 active:scale-[0.98] transition-all duration-200 flex justify-center items-center gap-2"
-                                >
-                                    Send Message
-                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+                  <>
+                    <h2 className="cp-form-title">Send a Message</h2>
+                    <form className="cp-form" onSubmit={handleSubmit}>
+                      <div>
+                        <label className="cp-label">Your Name</label>
+                        <input
+                          type="text" required placeholder="Jane Smith"
+                          className="cp-input"
+                          value={formState.name}
+                          onChange={e => setFormState(s => ({...s, name: e.target.value}))}
+                        />
+                      </div>
+                      <div>
+                        <label className="cp-label">Email Address</label>
+                        <input
+                          type="email" required placeholder="jane@example.com"
+                          className="cp-input"
+                          value={formState.email}
+                          onChange={e => setFormState(s => ({...s, email: e.target.value}))}
+                        />
+                      </div>
+                      <div>
+                        <label className="cp-label">How can we help?</label>
+                        <textarea
+                          required placeholder="Tell us about your issue or question..."
+                          className="cp-textarea"
+                          value={formState.message}
+                          onChange={e => setFormState(s => ({...s, message: e.target.value}))}
+                        />
+                      </div>
+                      <button type="submit" className="cp-submit">
+                        Send Message →
+                      </button>
+                    </form>
+                  </>
                 )}
-            </main>
-        </div>
-    );
+              </div>
+            </div>
+          )}
+        </main>
+      </div>
+    </>
+  );
 }
