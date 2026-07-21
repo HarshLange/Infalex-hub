@@ -7,15 +7,18 @@ import { Badge } from "@/components/ui/Badge";
 import { Heading } from "@/components/ui/Heading";
 import { Container, Section } from "@/components/layout";
 import { Users, Code, Zap } from "lucide-react";
+import { AnimatedBackground } from "@/components/ui/AnimatedBackground";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+import { MotionIcon } from "@/components/ui/MotionIcon";
 
 export function HeroSection() {
   return (
-    <Section className="relative overflow-hidden pt-40 pb-32 text-center" id="hero">
-      <div className="absolute inset-0 z-0 bg-brand-radial opacity-40 mix-blend-screen" />
+    <Section className="relative overflow-hidden pt-40 pb-32 text-center min-h-[90vh] flex flex-col justify-center" id="hero">
+      <AnimatedBackground />
       
       <Container className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
         <motion.div
-          variants={variants.slideUp}
+          variants={variants.fadeUp}
           initial="hidden"
           animate="visible"
           className="mb-8"
@@ -26,7 +29,7 @@ export function HeroSection() {
         </motion.div>
         
         <motion.div
-          variants={variants.slideUp}
+          variants={variants.fadeUp}
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.1 }}
@@ -37,29 +40,34 @@ export function HeroSection() {
         </motion.div>
         
         <motion.div
-          variants={variants.slideUp}
+          variants={variants.fadeUp}
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.2 }}
         >
-          <p className="text-body-lg text-neutral-400 mb-10 max-w-2xl mx-auto">
+          <p className="text-body-lg text-text-muted mb-12 max-w-2xl mx-auto">
             Infalex is a premium ecosystem of AI utilities designed to give you an unfair advantage in the job market. Not just a tool, but a platform for your entire career journey.
           </p>
         </motion.div>
         
         <motion.div
-          variants={variants.slideUp}
+          variants={variants.fadeUp}
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center gap-4 justify-center"
+          className="relative mt-2"
         >
-          <Button variant="default" size="lg" className="w-full sm:w-auto">
-            Explore Ecosystem
-          </Button>
-          <Button variant="outline" size="lg" className="w-full sm:w-auto">
-            Read Our Vision
-          </Button>
+          <div className="absolute inset-0 bg-surface/60 dark:bg-transparent backdrop-blur-md rounded-3xl -m-4 border border-border/80 dark:border-transparent shadow-sm dark:shadow-none -z-10" />
+          
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center">
+            <MagneticButton variant="default" size="lg" className="w-full sm:w-auto px-8 py-6 rounded-xl" onClick={() => window.open('https://resumetra.infalex.com', '_blank')}>
+              Explore Ecosystem
+              <MotionIcon icon={Zap} animation="pulse" className="ml-1 w-4 h-4" />
+            </MagneticButton>
+            <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 py-6 rounded-xl group bg-surface hover:bg-surface-hover" onClick={() => document.getElementById('ecosystem')?.scrollIntoView({ behavior: 'smooth' })}>
+              Read Our Vision
+            </Button>
+          </div>
         </motion.div>
 
         <motion.div
@@ -67,19 +75,19 @@ export function HeroSection() {
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.6 }}
-          className="mt-20 pt-10 border-t border-border w-full grid grid-cols-1 sm:grid-cols-3 gap-6 opacity-60"
+          className="mt-24 pt-10 border-t border-border w-full grid grid-cols-1 sm:grid-cols-3 gap-6 opacity-60"
         >
           <div className="flex items-center justify-center gap-3">
-            <Users className="w-5 h-5 text-neutral-400" />
-            <span className="text-body-sm font-medium text-neutral-400">10k+ Early Users</span>
+            <MotionIcon icon={Users} animation="lift" className="w-5 h-5 text-text-muted" />
+            <span className="text-body-sm font-medium text-text-muted">10k+ Early Users</span>
           </div>
           <div className="flex items-center justify-center gap-3">
-            <Zap className="w-5 h-5 text-neutral-400" />
-            <span className="text-body-sm font-medium text-neutral-400">Sub-second AI Inference</span>
+            <MotionIcon icon={Zap} animation="rotate" className="w-5 h-5 text-text-muted" />
+            <span className="text-body-sm font-medium text-text-muted">Sub-second AI Inference</span>
           </div>
           <div className="flex items-center justify-center gap-3">
-            <Code className="w-5 h-5 text-neutral-400" />
-            <span className="text-body-sm font-medium text-neutral-400">Modern Architecture</span>
+            <MotionIcon icon={Code} animation="pulse" className="w-5 h-5 text-text-muted" />
+            <span className="text-body-sm font-medium text-text-muted">Modern Architecture</span>
           </div>
         </motion.div>
       </Container>

@@ -14,6 +14,7 @@ import {
 } from "./theme";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -27,11 +28,19 @@ const config: Config = {
         warning: colors.warning,
         danger: colors.danger,
         info: colors.info,
-        background: colors.background,
+        bg: colors.bg,
+        bg2: colors.bg2,
         surface: colors.surface,
         'surface-2': colors['surface-2'],
-        accent: 'var(--accent)',
-        'accent-glow': 'var(--accent-glow)',
+        'surface-hover': colors['surface-hover'],
+        text: colors.text,
+        'text-muted': colors['text-muted'],
+        'text-subtle': colors['text-subtle'],
+        border: colors.border,
+        border2: colors.border2,
+        accent: colors.accent,
+        'accent-glow': colors['accent-glow'],
+        accent2: colors.accent2,
       },
       fontFamily: typography.fontFamily,
       fontSize: typography.fontSize as any,

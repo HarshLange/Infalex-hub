@@ -28,9 +28,12 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
 };
 
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+// ... imports above
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-162KWK3Q3L"
@@ -46,12 +49,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
       <body
-        className={`${figtree.className} antialiased flex flex-col min-h-screen`}
-        style={{ background: "#05050a", color: "#f0f0f8" }}
+        className={`${figtree.className} antialiased flex flex-col min-h-screen transition-colors duration-300`}
       >
-        <Navbar />
-        <main className="flex-grow pt-[68px]">{children}</main>
-        <Footer />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
+          <main className="flex-grow pt-[68px]">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
