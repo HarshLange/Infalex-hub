@@ -1,3 +1,7 @@
+@import "../styles/utilities.css";
+@import "../styles/components.css";
+@import "../styles/animations.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -37,6 +41,7 @@ body {
   color: #f0f0f8 !important;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
 }
 
@@ -52,3 +57,13 @@ main {
   .hero-content rules here. page.tsx owns all hero styles in
   its own <style> block. Any overrides here break the animations.
 */
+
+::selection {
+  background: rgba(59,107,255,0.3);
+  color: #f0f0f8;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }

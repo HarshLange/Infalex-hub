@@ -14,10 +14,12 @@
   },
   "dependencies": {
     "@cloudflare/next-on-pages": "^1.13.16",
+    "clsx": "^2.1.1",
     "framer-motion": "^12.38.0",
     "next": "15.5.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
