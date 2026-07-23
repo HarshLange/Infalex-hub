@@ -1,35 +1,14 @@
-import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 import Script from "next/script";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { Navbar } from "@/components/layout/navigation/Navbar";
+import { Footer } from "@/components/layout/footer/Footer";
+import { defaultMetadata } from "@/config/metadata";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import "./globals.css";
 
 const figtree = Figtree({ subsets: ["latin"], weight: ["300", "400", "500", "600"] });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Infalex | The AI Hub of the Future",
-    template: "%s | Infalex",
-  } ,
-  description: "Infalex is an MSME-registered platform providing next-generation AI utilities, including an AI Resume Matcher and developer tools.",
-  keywords: ["AI tools", "resume matcher","SaaS", "developer utilities","India MSME", "Developer Tools", "Infalex", "AI hub", "career AI", "productivity tools"],
-  authors: [{ name: "Infalex Team", url: "https://www.infalex.com" }],
-  creator: "Infalex Team",
-  publisher: "Infalex Ecosystem",
-  icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
-    ],
-    apple: [{ url: '/apple-touch-icon.png' }],
-  },
-  manifest: '/site.webmanifest',
-};
-
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
-// ... imports above
+export const metadata = defaultMetadata;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -53,7 +32,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          <main className="flex-grow pt-[68px]">{children}</main>
+          <main id="main-content" className="flex-grow pt-[76px]" tabIndex={-1}>
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>
