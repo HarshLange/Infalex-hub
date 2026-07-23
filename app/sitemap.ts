@@ -1,11 +1,13 @@
 import { MetadataRoute } from 'next';
+import { siteConfig } from '@/config/site';
+import { getAllPosts } from '@/lib/blog/api';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Replace this with your actual production domain
-  const baseUrl = 'https://infalex.com'; 
+  const baseUrl = siteConfig.url; 
+  const posts = getAllPosts();
 
   const routes = [
-    '', // This represents your home page (/)
+    '', 
     '/about',
     '/pricing',
     '/contact',
@@ -14,13 +16,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/refund',
     '/delivery',
     '/disclaimer',
+    '/blog',
+    '/products',
   ];
 
-  return routes.map((route) => ({
+  const staticSitemap: MetadataRoute.Sitemap = routes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    // Give higher priority and frequency to your main marketing pages
     changeFrequency: route === '' ? 'weekly' : 'monthly',
-    priority: route === '' ? 1.0 : ['/pricing', '/about'].includes(route) ? 0.8 : 0.5,
+    priority: route === '' ? 1.0 : ['/blog', '/products', '/about'].includes(route) ? 0.9 : 0.5,
   }));
+
+  const blogSitemap: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.updatedAt || post.publishedAt),
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
+
+  const uniqueCategories = Array.from(new Set(posts.map(post => post.categoryId)));
+  const categorySitemap: MetadataRoute.Sitemap = uniqueCategories.map((category) => ({
+    url: `${baseUrl}/blog/category/${category}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.7,
+  }));
+
+  return [...staticSitemap, ...blogSitemap, ...categorySitemap];
 }

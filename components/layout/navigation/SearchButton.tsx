@@ -1,11 +1,13 @@
 "use client";
 import { Search } from "lucide-react";
+import { openSearch } from "./GlobalSearch";
 
 export function SearchButton() {
   return (
     <button 
-      className="hidden md:flex items-center gap-2 px-3 py-1.5 text-sm text-text-muted bg-surface border border-border2 hover:border-border hover:bg-surface-hover rounded-lg transition-colors group"
-      aria-label="Search (Placeholder)"
+      onClick={openSearch}
+      className="hidden md:flex items-center gap-2 px-3 py-1.5 text-sm text-text-muted bg-surface border border-border2 hover:border-border hover:bg-surface-hover rounded-lg transition-colors group focus:outline-none focus:ring-2 focus:ring-accent"
+      aria-label="Open Search"
     >
       <Search className="w-4 h-4 text-text-subtle group-hover:text-text-muted transition-colors" />
       <span>Search...</span>

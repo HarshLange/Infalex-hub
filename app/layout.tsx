@@ -15,6 +15,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <Script
+          id="json-ld-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Infalex",
+              "url": "https://infalex.com",
+              "logo": "https://infalex.com/icon.svg",
+              "sameAs": [
+                "https://twitter.com/infalex",
+                "https://github.com/infalexhq"
+              ]
+            })
+          }}
+        />
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-162KWK3Q3L"
           strategy="afterInteractive"
         />

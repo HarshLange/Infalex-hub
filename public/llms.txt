@@ -1,0 +1,19 @@
+# Infalex 
+
+> The complete ecosystem for AI automation, career acceleration, and developer tools.
+
+## Website Purpose
+Infalex is an India-based MSME-registered software initiative building ethical, practical AI tools for students, professionals, and developers.
+
+## Content Sections
+- /blog : The Knowledge Hub, featuring articles on AI, career advice, and engineering.
+- /products/resumetra : An AI Resume Analyzer and Job Description Matcher.
+- /about : Information about our MSME identity, company vision, and founding in 2026.
+- /contact : Get in touch with us for support, feature requests, or business inquiries.
+
+## Design System
+The website is built with Next.js App Router, Tailwind CSS, and Framer Motion. We employ a custom Design System tailored for a premium, dark-mode-first aesthetic with rich micro-interactions.
+
+## Legal
+- All tools and platforms are operated under Infalex's MSME registration.
+- For legal inquiries, refer to our Privacy Policy and Terms of Service.

@@ -7,7 +7,8 @@ import { AuthorCard } from "../../../components/blog/AuthorCard";
 import { ReadingProgress } from "../../../components/blog/ReadingProgress";
 import { MdxContent } from "../../../components/blog/MdxContent";
 import { NewsletterCTA } from "../../../components/blog/NewsletterCTA";
-import { ArticleCard } from "../../../components/blog/ArticleCard";
+import { RelatedArticles } from "../../../components/blog/RelatedArticles";
+import Script from "next/script";
 
 export async function generateStaticParams() {
   const slugs = getPostSlugs();
@@ -56,11 +57,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
-  // Get 3 related posts based on category (excluding current)
-  const allPosts = getAllPosts();
-  const relatedPosts = allPosts
-    .filter(p => p.categoryId === post.categoryId && p.slug !== post.slug)
-    .slice(0, 3);
+
 
   const date = new Date(post.publishedAt).toLocaleDateString("en-US", {
     month: "long",
@@ -73,6 +70,27 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <ReadingProgress />
       
       <article className="pt-32 pb-24 relative overflow-hidden">
+        <Script
+          id="json-ld-article"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "headline": post.title,
+              "image": [
+                `https://infalex.com${post.coverImage}`
+              ],
+              "datePublished": post.publishedAt,
+              "dateModified": post.updatedAt || post.publishedAt,
+              "author": [{
+                  "@type": "Person",
+                  "name": post.authorId,
+                  "url": "https://infalex.com/about"
+              }]
+            })
+          }}
+        />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-accent/10 blur-[120px] rounded-full -z-10 pointer-events-none" />
         
         <Container className="max-w-3xl">
@@ -112,18 +130,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </article>
       
       {/* Related Articles */}
-      {relatedPosts.length > 0 && (
-        <section className="py-24 bg-surface/50 border-t border-border">
-          <Container>
-            <h2 className="text-2xl font-bold font-heading mb-10 text-text">Related Reading</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {relatedPosts.map(related => (
-                <ArticleCard key={related.slug} post={related} />
-              ))}
-            </div>
-          </Container>
-        </section>
-      )}
+      <RelatedArticles currentSlug={post.slug} categoryId={post.categoryId} />
 
       {/* Newsletter */}
       <Container className="pb-24">

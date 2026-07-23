@@ -9,6 +9,8 @@ import { MobileNavigation } from "./MobileNavigation";
 import { NavigationCTA } from "./NavigationCTA";
 import { SearchButton } from "./SearchButton";
 import { ThemeToggle } from "../../ui/ThemeToggle";
+import { Brand } from "../../branding/Brand";
+import { GlobalSearch } from "./GlobalSearch";
 
 export function Navbar() {
   const { scrollY } = useScroll();
@@ -38,13 +40,7 @@ export function Navbar() {
         role="banner"
       >
         <div className="flex items-center gap-6">
-          <Link 
-            href="/" 
-            className="font-heading text-xl font-bold text-text tracking-tight flex-shrink-0 z-50 rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-            aria-label="Infalex Home"
-          >
-            infa<span className="text-accent">lex</span>
-          </Link>
+          <Brand size="md" />
           <DesktopNavigation />
         </div>
 
@@ -59,6 +55,8 @@ export function Navbar() {
           </div>
         </div>
       </motion.header>
+
+      <GlobalSearch />
     </>
   );
 }
