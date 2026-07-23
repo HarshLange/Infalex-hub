@@ -15,5 +15,15 @@ export const categories: Record<string, Category> = {
     id: "product",
     name: "Product & Updates",
     description: "Release notes, changelogs, and new features."
+  },
+  career: {
+    id: "career",
+    name: "Career & Growth",
+    description: "Actionable advice on resumes, interviews, and career progression."
+  },
+  business: {
+    id: "business",
+    name: "Business & Strategy",
+    description: "Insights on startup growth and product strategy."
   }
 };

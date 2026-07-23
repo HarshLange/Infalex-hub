@@ -31,7 +31,7 @@ const components = {
   code: (props: any) => (
     <code className="relative rounded bg-surface-hover px-[0.3rem] py-[0.2rem] font-mono text-sm text-accent2 border border-border2" {...props} />
   ),
-  Callout,
+  Callout: (props: any) => <Callout {...props} />,
 };
 
 export function MdxContent({ content }: { content: string }) {
