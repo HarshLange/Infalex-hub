@@ -1,0 +1,51 @@
+---
+title: "The Architecture of AI Resume Intelligence"
+excerpt: "How we built the core intelligence engine behind Resumetra using advanced RAG and embedding techniques."
+publishedAt: "2026-07-24T00:00:00.000Z"
+authorId: "harsh"
+categoryId: "engineering"
+tags: ["rag", "llms", "architecture", "resumetra"]
+coverImage: ""
+featured: true
+---
+
+Building an intelligent resume parsing and matching engine requires more than just calling an LLM. At Infalex, we realized early on that simple keyword matching wasn't enough.
+
+## The Problem with Keywords
+
+Traditional Applicant Tracking Systems (ATS) rely on exact keyword matches. If a resume says "React.js" and the job description says "ReactJS", many legacy systems fail.
+
+<Callout type="warning">
+  Legacy systems punish candidates for arbitrary formatting rather than evaluating true capability.
+</Callout>
+
+## Enter Semantic Search and RAG
+
+By generating embeddings of the candidate's experience and comparing them against the latent space of the job requirements, we achieve true **semantic understanding**.
+
+### The Pipeline
+
+Our pipeline looks something like this:
+
+1. **Extraction**: We use OCR and NLP to parse unstructured PDFs into standardized JSON.
+2. **Embedding**: We use advanced embedding models to project the experience into a high-dimensional vector space.
+3. **Retrieval**: We use Vector Search (RAG) to find the nearest semantic matches in the job description.
+
+```typescript
+// Example of how we generate embeddings
+import { OpenAIEmbeddings } from "@langchain/openai";
+
+const embeddings = new OpenAIEmbeddings({
+  modelName: "text-embedding-3-large",
+});
+
+const vector = await embeddings.embedQuery("Built a distributed microservices architecture using Go.");
+```
+
+<Callout type="success">
+  This allows us to understand that "Built a distributed microservices architecture" implies strong backend engineering skills, even if the word "backend" is never explicitly stated!
+</Callout>
+
+### The Future
+
+We're currently experimenting with fine-tuned models tailored specifically for technical recruiting. Stay tuned for our next deep dive on evaluating model performance!
