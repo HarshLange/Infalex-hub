@@ -18,7 +18,7 @@ export function CategoryFilter({ categories, activeCategory, onSelect }: Categor
           "px-4 py-2 rounded-full text-sm font-medium transition-colors border",
           activeCategory === null
             ? "bg-text text-bg border-text"
-            : "bg-surface text-text-muted border-border2 hover:border-text hover:text-text"
+            : "bg-surface text-foreground-muted border-border-subtle hover:border-text hover:text-foreground"
         )}
       >
         All Products
@@ -32,7 +32,7 @@ export function CategoryFilter({ categories, activeCategory, onSelect }: Categor
             "px-4 py-2 rounded-full text-sm font-medium transition-colors border",
             activeCategory === category
               ? "bg-text text-bg border-text"
-              : "bg-surface text-text-muted border-border2 hover:border-text hover:text-text"
+              : "bg-surface text-foreground-muted border-border-subtle hover:border-text hover:text-foreground"
           )}
         >
           {category}

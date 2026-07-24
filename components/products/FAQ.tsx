@@ -14,7 +14,7 @@ export function FAQ({ faqs }: { faqs?: ProductFAQ[] }) {
     <section className="py-24 bg-surface/30 border-b border-border">
       <Container className="max-w-3xl">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-text tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground tracking-tight">
             Frequently Asked Questions
           </h2>
         </div>
@@ -27,7 +27,7 @@ export function FAQ({ faqs }: { faqs?: ProductFAQ[] }) {
                 key={idx} 
                 className={cn(
                   "bg-surface border rounded-2xl overflow-hidden transition-colors duration-200",
-                  isOpen ? "border-accent/50 shadow-md" : "border-border2 hover:border-border"
+                  isOpen ? "border-primary/50 shadow-md" : "border-border-subtle hover:border-border"
                 )}
               >
                 <button
@@ -35,9 +35,9 @@ export function FAQ({ faqs }: { faqs?: ProductFAQ[] }) {
                   className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-semibold text-text">{faq.question}</span>
+                  <span className="font-semibold text-foreground">{faq.question}</span>
                   <ChevronDown className={cn(
-                    "w-5 h-5 text-text-subtle transition-transform duration-300",
+                    "w-5 h-5 text-foreground-subtle transition-transform duration-300",
                     isOpen ? "rotate-180" : ""
                   )} />
                 </button>
@@ -47,7 +47,7 @@ export function FAQ({ faqs }: { faqs?: ProductFAQ[] }) {
                     isOpen ? "max-h-96 pb-5 opacity-100" : "max-h-0 opacity-0"
                   )}
                 >
-                  <p className="text-text-muted text-sm leading-relaxed">
+                  <p className="text-foreground-muted text-sm leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>

@@ -32,13 +32,13 @@ export function Brand({ variant = "full", size = "md", className, onClick }: Bra
       aria-label="Infalex Home"
     >
       <img 
-        src="/favicon.svg" 
+        src="/icon.svg" 
         alt="Infalex Logo" 
         className={cn("transition-transform group-hover:scale-[1.03]", iconSizes[size])} 
       />
       {variant === "full" && (
-        <span className={cn("font-heading font-bold text-text tracking-tight", textSizes[size])}>
-          infa<span className="text-accent">lex</span>
+        <span className={cn("font-heading font-bold text-foreground tracking-tight", textSizes[size])}>
+          infa<span className="text-primary">lex</span>
         </span>
       )}
     </Link>

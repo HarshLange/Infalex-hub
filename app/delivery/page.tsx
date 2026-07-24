@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function DeliveryPage() {
   return (
     <LegalPageLayout title="Delivery & Shipping Policy" description="Because Infalex provides digital API credits and software utilities, purchases are generally non-refundable. However, we review technical failures on a case-by-case basis." lastUpdated="February 2026">
-      <div className="bg-surface border border-border2 border-l-4 border-l-accent p-6 rounded-lg mb-8">
+      <div className="bg-surface border border-border-subtle border-l-4 border-l-accent p-6 rounded-lg mb-8">
         <strong>Instant Digital Delivery · No Shipping Required</strong>
         <p className="mt-2 mb-0">Infalex is a fully digital platform. No physical goods are shipped — all deliveries are instant and electronic.</p>
       </div>

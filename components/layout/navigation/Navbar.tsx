@@ -24,7 +24,7 @@ export function Navbar() {
     <>
       <a 
         href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent-glow"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent-glow"
       >
         Skip to content
       </a>
@@ -32,7 +32,7 @@ export function Navbar() {
       <motion.header
         className={cn(
           "fixed top-0 left-0 right-0 z-[100] px-6 lg:px-12 flex items-center justify-between font-body border-b transition-all duration-300",
-          isScrolled ? "bg-bg/85 backdrop-blur-xl border-border shadow-sm" : "bg-transparent border-transparent"
+          isScrolled ? "bg-surface-glass/80 backdrop-blur-md border-border-subtle shadow-soft" : "bg-transparent border-transparent"
         )}
         initial={{ height: "76px" }}
         animate={{ height: isScrolled ? "64px" : "76px" }}

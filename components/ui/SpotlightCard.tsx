@@ -32,7 +32,7 @@ export const SpotlightCard = React.forwardRef<HTMLDivElement, SpotlightCardProps
         }}
         className={cn(
           "relative overflow-hidden group transition-all duration-300",
-          !prefersReducedMotion && "hover:-translate-y-1 hover:shadow-md dark:hover:shadow-lg dark:hover:shadow-accent/5 hover:border-border2 dark:hover:border-accent/30",
+          !prefersReducedMotion && "hover:-translate-y-1 hover:shadow-md dark:hover:shadow-lg dark:hover:shadow-primary/5 hover:border-border-subtle dark:hover:border-primary/30",
           className
         )}
         onMouseMove={handleMouseMove}

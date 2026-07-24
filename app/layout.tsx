@@ -6,7 +6,7 @@ import { defaultMetadata } from "@/config/metadata";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import "./globals.css";
 
-const figtree = Figtree({ subsets: ["latin"], weight: ["300", "400", "500", "600"] });
+const figtree = Figtree({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700", "800"] });
 
 export const metadata = defaultMetadata;
 

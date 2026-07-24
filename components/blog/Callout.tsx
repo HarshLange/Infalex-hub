@@ -26,7 +26,7 @@ export function Callout({ type = "info", children }: CalloutProps) {
   return (
     <div className={cn("my-6 flex items-start gap-3 rounded-xl border p-4", styles[type])}>
       <Icon className="w-5 h-5 flex-shrink-0 mt-0.5" />
-      <div className="text-sm font-medium leading-relaxed [&>p]:m-0 text-text">
+      <div className="text-sm font-medium leading-relaxed [&>p]:m-0 text-foreground">
         {children}
       </div>
     </div>

@@ -2,7 +2,7 @@
 
 import { Container, Section } from "@/components/layout";
 import { Heading } from "@/components/ui/Heading";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { RevealOnScroll } from "@/components/ui/motion";
 import { motion } from "framer-motion";
 
 export function RoadmapSection() {
@@ -16,11 +16,11 @@ export function RoadmapSection() {
   ];
 
   return (
-    <Section className="py-section-lg bg-surface-2 border-y border-border overflow-hidden" id="roadmap">
+    <Section className="py-section-lg bg-surface-elevated overflow-hidden" id="roadmap">
       <Container>
-        <ScrollReveal animation="fadeUp">
+        <RevealOnScroll >
           <Heading level={2} className="text-center mb-16">Platform Roadmap</Heading>
-        </ScrollReveal>
+        </RevealOnScroll>
         
         <div className="relative max-w-5xl mx-auto">
           {/* Animated Connecting Line */}
@@ -41,35 +41,35 @@ export function RoadmapSection() {
               const isCurrent = milestone.status === "current";
               
               return (
-                <ScrollReveal key={i} animation="scaleUp" delay={0.2 + (i * 0.1)}>
+                <RevealOnScroll key={i}  delay={0.2 + (i * 0.1)}>
                   <div className="flex md:flex-col items-start md:items-center relative group">
                     {/* Node */}
                     <div className={`
                       w-12 h-12 md:mb-6 rounded-full flex items-center justify-center shrink-0 border-2 transition-colors duration-500
-                      ${isDone ? 'bg-accent border-accent text-white shadow-[0_0_15px_rgba(59,107,255,0.3)]' : 
-                        isCurrent ? 'bg-surface border-accent text-accent shadow-[0_0_15px_rgba(59,107,255,0.3)]' : 
-                        'bg-surface border-border text-text-subtle group-hover:border-border'}
+                      ${isDone ? 'bg-primary border-primary text-white shadow-[0_0_15px_rgba(59,107,255,0.3)]' : 
+                        isCurrent ? 'bg-surface border-primary text-primary shadow-[0_0_15px_rgba(59,107,255,0.3)]' : 
+                        'bg-surface border-border text-foreground-subtle group-hover:border-border'}
                     `}>
                       {isDone ? (
                         <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <motion.path d="M1 5L4.5 8.5L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.5 + (i * 0.1) }} />
                         </svg>
                       ) : (
-                        <div className={`w-3 h-3 rounded-full ${isCurrent ? 'bg-accent animate-pulse' : 'bg-border group-hover:bg-surface-hover transition-colors'}`} />
+                        <div className={`w-3 h-3 rounded-full ${isCurrent ? 'bg-primary animate-pulse' : 'bg-border group-hover:bg-surface-hover transition-colors'}`} />
                       )}
                     </div>
                     
                     {/* Content */}
                     <div className="ml-6 md:ml-0 md:text-center mt-2 md:mt-0">
-                      <Heading level={4} className={`mb-1 text-sm md:text-base transition-colors ${isCurrent ? 'text-text' : isDone ? 'text-text' : 'text-text-subtle group-hover:text-text'}`}>
+                      <Heading level={4} className={`mb-1 text-sm md:text-base transition-colors ${isCurrent ? 'text-foreground' : isDone ? 'text-foreground' : 'text-foreground-subtle group-hover:text-foreground'}`}>
                         {milestone.title}
                       </Heading>
-                      <p className="text-xs text-text-subtle max-w-[140px] md:mx-auto transition-colors group-hover:text-text-muted">
+                      <p className="text-xs text-foreground-subtle max-w-[140px] md:mx-auto transition-colors group-hover:text-foreground-muted">
                         {milestone.desc}
                       </p>
                     </div>
                   </div>
-                </ScrollReveal>
+                </RevealOnScroll>
               );
             })}
           </div>

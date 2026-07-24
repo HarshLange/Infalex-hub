@@ -16,7 +16,7 @@ interface FooterColumnProps {
 export function FooterColumn({ title, links, className }: FooterColumnProps) {
   return (
     <div className={cn("flex flex-col", className)}>
-      <p className="text-[11px] font-semibold tracking-widest uppercase text-text-subtle mb-4">
+      <p className="text-[11px] font-semibold tracking-widest uppercase text-foreground-subtle mb-4">
         {title}
       </p>
       <ul className="flex flex-col gap-2.5 m-0 p-0 list-none">
@@ -27,7 +27,7 @@ export function FooterColumn({ title, links, className }: FooterColumnProps) {
                 href={link.href} 
                 target="_blank" 
                 rel="noreferrer" 
-                className="text-sm text-text-muted hover:text-text transition-colors flex items-center gap-1 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+                className="text-sm text-foreground-muted hover:text-foreground transition-colors flex items-center gap-1 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
               >
                 {link.name} 
                 <span className="text-[10px] opacity-50 group-hover:opacity-100 transition-opacity">↗</span>
@@ -35,7 +35,7 @@ export function FooterColumn({ title, links, className }: FooterColumnProps) {
             ) : (
               <Link 
                 href={link.href} 
-                className="text-sm text-text-muted hover:text-text transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+                className="text-sm text-foreground-muted hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
               >
                 {link.name}
               </Link>

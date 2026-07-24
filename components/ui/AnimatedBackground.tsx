@@ -20,7 +20,7 @@ export function AnimatedBackground() {
           y: [0, 30, 0],
         }}
         transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-accent/20 blur-[100px]"
+        className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary/20 blur-[100px]"
       />
       
       <motion.div

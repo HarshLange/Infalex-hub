@@ -19,7 +19,7 @@ export const CTA = React.forwardRef<HTMLDivElement, CTAProps>(
     return (
       <div ref={ref} className={cn("relative py-24 overflow-hidden", className)} {...props}>
         {/* Background elements */}
-        <div className="absolute inset-0 bg-surface-2 -z-10" />
+        <div className="absolute inset-0 bg-surface-elevated -z-10" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-full bg-brand-radial blur-3xl opacity-30 -z-10 pointer-events-none" />
         
         <Container className="text-center relative z-10">

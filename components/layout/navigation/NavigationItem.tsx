@@ -21,7 +21,7 @@ export function NavigationItem({ name, href, isMobile, onClick }: NavigationItem
         href={href} 
         className={cn(
           "px-4 py-3 text-lg font-medium rounded-xl transition-colors",
-          isActive ? "bg-surface text-text border border-border2 shadow-sm" : "text-text-muted hover:bg-surface-hover hover:text-text"
+          isActive ? "bg-surface text-foreground border border-border-subtle shadow-sm" : "text-foreground-muted hover:bg-surface-hover hover:text-foreground"
         )}
         onClick={onClick}
       >
@@ -34,8 +34,8 @@ export function NavigationItem({ name, href, isMobile, onClick }: NavigationItem
     <Link 
       href={href}
       className={cn(
-        "relative px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:text-text hover:bg-surface-hover",
-        isActive ? "text-text" : "text-text-muted"
+        "relative px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:text-foreground hover:bg-surface-hover",
+        isActive ? "text-foreground" : "text-foreground-muted"
       )}
     >
       {name}

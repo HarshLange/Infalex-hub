@@ -50,7 +50,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
             ))}
           </div>
         ) : (
-          <div className="py-12 text-center text-text-muted">
+          <div className="py-12 text-center text-foreground-muted">
             No articles found in this category.
           </div>
         )}

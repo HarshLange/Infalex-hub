@@ -1,11 +1,18 @@
 export const shadows = {
-  sm: 'var(--shadow-sm)',
-  md: 'var(--shadow-md)',
-  lg: 'var(--shadow-lg)',
+  sm: 'var(--shadow-soft)', // alias for soft
+  md: 'var(--shadow-card)', // alias for card
+  lg: 'var(--shadow-floating)', // alias for floating
+  
+  soft: 'var(--shadow-soft)',
+  card: 'var(--shadow-card)',
+  floating: 'var(--shadow-floating)',
+  glass: 'var(--shadow-glass)',
+  glow: 'var(--shadow-glow)',
+  
   xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
   '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
   inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
   none: 'none',
-  glow: 'var(--shadow-glow)',
+  
   'glow-lg': '0 0 40px rgba(var(--accent-glow) / 0.5)',
 };

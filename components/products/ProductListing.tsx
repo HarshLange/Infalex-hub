@@ -29,14 +29,14 @@ export function ProductListing({ products, categories }: { products: Product[], 
         {/* Search & Filter Bar */}
         <div className="max-w-xl mx-auto mb-10 relative">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-            <Search className="h-5 w-5 text-text-subtle" />
+            <Search className="h-5 w-5 text-foreground-subtle" />
           </div>
           <input
             type="text"
             placeholder="Search products, APIs, and tools..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-4 bg-surface border border-border2 rounded-2xl text-text placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent transition-all shadow-sm"
+            className="w-full pl-12 pr-4 py-4 bg-surface border border-border-subtle rounded-2xl text-foreground placeholder-text-subtle focus:outline-none focus:ring-2 focus:ring-accent transition-all shadow-sm"
           />
         </div>
 
@@ -52,7 +52,7 @@ export function ProductListing({ products, categories }: { products: Product[], 
           ))}
           
           {filteredProducts.length === 0 && (
-            <div className="col-span-full py-20 text-center text-text-muted">
+            <div className="col-span-full py-20 text-center text-foreground-muted">
               No products found matching your criteria.
             </div>
           )}

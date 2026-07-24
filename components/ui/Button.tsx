@@ -3,27 +3,30 @@ import { cn } from "../../lib/utils"
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default" | "secondary" | "outline" | "ghost" | "link"
+  variant?: "default" | "secondary" | "outline" | "ghost" | "link" | "primary" | "danger" | "success"
   size?: "default" | "sm" | "lg" | "icon"
 }
 
 /**
- * Enterprise Button component with premium hover transitions.
+ * Enterprise Button component with premium hover and active transitions.
  */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "default", size = "default", children, ...props }, ref) => {
     const variants = {
-      default: "bg-accent text-white shadow-glow hover:shadow-[0_0_32px_rgba(var(--accent-glow),0.4)] border border-transparent hover:border-accent/50 hover:bg-accent hover:-translate-y-[1px]",
-      secondary: "bg-surface border border-border2 text-text hover:bg-surface-hover hover:-translate-y-[1px] shadow-sm hover:shadow-md hover:border-border",
-      outline: "border border-border2 bg-transparent hover:bg-surface-hover text-text hover:-translate-y-[1px] shadow-sm hover:shadow-md hover:border-border",
-      ghost: "bg-transparent hover:bg-surface-hover text-text hover:-translate-y-[1px]",
-      link: "bg-transparent underline-offset-4 hover:underline text-text hover:text-accent transition-colors",
+      default: "bg-surface-elevated text-foreground border border-border hover:bg-surface-hover shadow-sm hover:shadow-card",
+      primary: "bg-gradient-to-r from-primary to-indigo-600 text-white shadow-sm hover:shadow-md hover:brightness-110 hover:scale-[1.01] border border-transparent",
+      secondary: "bg-surface-elevated text-foreground border border-transparent hover:bg-surface-hover hover:border-border-subtle shadow-sm",
+      outline: "border border-border bg-transparent hover:bg-surface-hover text-foreground shadow-sm hover:shadow-card",
+      ghost: "bg-transparent hover:bg-surface-hover text-foreground",
+      link: "bg-transparent underline-offset-4 hover:underline text-primary transition-colors",
+      danger: "bg-danger text-white hover:brightness-110 shadow-sm border border-transparent",
+      success: "bg-success text-white hover:brightness-110 shadow-sm border border-transparent",
     }
 
     const sizes = {
       default: "h-10 px-4 py-2",
-      sm: "h-9 rounded-md px-3",
-      lg: "h-11 rounded-md px-8 text-base",
+      sm: "h-9 rounded-md px-3 text-sm",
+      lg: "h-12 rounded-lg px-8 text-base",
       icon: "h-10 w-10",
     }
 
@@ -31,7 +34,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center rounded-md text-button font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50 group",
+          "inline-flex items-center justify-center rounded-md text-button font-medium transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] group",
           variants[variant],
           sizes[size],
           className

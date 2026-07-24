@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function RefundPage() {
   return (
     <LegalPageLayout title="Refund Policy" description="Because Infalex provides digital API credits and software utilities, purchases are generally non-refundable. However, we review technical failures on a case-by-case basis." lastUpdated="February 2026">
-      <div className="bg-surface border border-border2 border-l-4 border-l-accent p-6 rounded-lg mb-8">
+      <div className="bg-surface border border-border-subtle border-l-4 border-l-accent p-6 rounded-lg mb-8">
         <strong>TL;DR:</strong> All digital purchases are final once processed. Exceptions exist for prolonged outages, duplicate charges, or verified technical failures. Contact us within 7 days of purchase.
       </div>
 

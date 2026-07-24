@@ -14,7 +14,7 @@ export default function DesignSystemPage() {
   }
 
   return (
-    <main className="min-h-screen bg-bg text-text pt-24 pb-12">
+    <main className="min-h-screen bg-bg text-foreground pt-24 pb-12">
       <Container>
         <Heading level={1} className="mb-12">Design System</Heading>
         

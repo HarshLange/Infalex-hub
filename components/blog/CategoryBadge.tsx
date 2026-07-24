@@ -7,7 +7,7 @@ export function CategoryBadge({ categoryId, className }: { categoryId: string; c
 
   return (
     <span className={cn(
-      "inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-semibold tracking-wide uppercase bg-surface-hover text-accent border border-border2",
+      "inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-semibold tracking-wide uppercase bg-surface-hover text-primary border border-border-subtle",
       className
     )}>
       {category.name}

@@ -19,7 +19,7 @@ export function AuthorCard({ authorId }: { authorId: string }) {
   return (
     <div className="flex items-center gap-3">
       {/* Fallback avatar if Image fails or missing */}
-      <div className={`relative w-10 h-10 rounded-full overflow-hidden bg-gradient-to-tr ${gradient} border border-border2 flex-shrink-0 shadow-sm`}>
+      <div className={`relative w-10 h-10 rounded-full overflow-hidden bg-gradient-to-tr ${gradient} border border-border-subtle flex-shrink-0 shadow-sm`}>
         <div className="absolute inset-0 flex items-center justify-center text-white font-heading font-bold text-lg drop-shadow-sm">
           {author.name.charAt(0).toUpperCase()}
         </div>
@@ -32,8 +32,8 @@ export function AuthorCard({ authorId }: { authorId: string }) {
         )}
       </div>
       <div className="flex flex-col">
-        <span className="text-sm font-medium text-text">{author.name}</span>
-        <span className="text-xs text-text-subtle">{author.role}</span>
+        <span className="text-sm font-medium text-foreground">{author.name}</span>
+        <span className="text-xs text-foreground-subtle">{author.role}</span>
       </div>
     </div>
   );

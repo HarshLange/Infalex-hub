@@ -12,10 +12,10 @@ export function DesktopNavigation() {
       
       <div className="w-px h-5 bg-border mx-2" />
       
-      <a href={siteConfig.links.blog} target="_blank" rel="noreferrer" className="px-4 py-2 text-sm font-medium text-text-muted hover:text-text hover:bg-surface-hover rounded-lg transition-colors">
+      <a href={siteConfig.links.blog} target="_blank" rel="noreferrer" className="px-4 py-2 text-sm font-medium text-foreground-muted hover:text-foreground hover:bg-surface-hover rounded-lg transition-colors">
         Blog ↗
       </a>
-      <a href={siteConfig.links.tools} target="_blank" rel="noreferrer" className="px-4 py-2 text-sm font-medium text-text-muted hover:text-text hover:bg-surface-hover rounded-lg transition-colors">
+      <a href={siteConfig.links.tools} target="_blank" rel="noreferrer" className="px-4 py-2 text-sm font-medium text-foreground-muted hover:text-foreground hover:bg-surface-hover rounded-lg transition-colors">
         Tools ↗
       </a>
     </div>

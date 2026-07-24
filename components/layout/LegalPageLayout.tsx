@@ -22,7 +22,7 @@ export function LegalPageLayout({ title, description, lastUpdated, children }: L
       />
       <Section className="pt-0">
         <Container size="sm">
-          <div className="prose prose-invert prose-p:text-text-muted prose-headings:text-text prose-headings:font-heading prose-a:text-accent hover:prose-a:text-accent-glow max-w-none prose-li:text-text-muted">
+          <div className="prose prose-invert prose-p:text-foreground-muted prose-headings:text-foreground prose-headings:font-heading prose-a:text-primary hover:prose-a:text-primary-glow max-w-none prose-li:text-foreground-muted">
             {children}
           </div>
         </Container>

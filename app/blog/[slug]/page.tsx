@@ -91,11 +91,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             })
           }}
         />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-accent/10 blur-[120px] rounded-full -z-10 pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-primary/10 blur-[120px] rounded-full -z-10 pointer-events-none" />
         
         <Container className="max-w-3xl">
           <div className="flex flex-col items-center text-center mb-16">
-            <div className="flex items-center justify-center gap-3 mb-8 text-sm text-text-subtle font-medium">
+            <div className="flex items-center justify-center gap-3 mb-8 text-sm text-foreground-subtle font-medium">
               <CategoryBadge categoryId={post.categoryId} />
               <span>•</span>
               <time dateTime={post.publishedAt}>{date}</time>
@@ -103,7 +103,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <span>{post.readingTime}</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text tracking-tight mb-8 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground tracking-tight mb-8 leading-tight">
               {post.title}
             </h1>
 
@@ -113,7 +113,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
           
           {post.coverImage && (
-            <div className="w-full aspect-[2/1] md:aspect-[21/9] rounded-2xl overflow-hidden mb-16 shadow-2xl border border-border2">
+            <div className="w-full aspect-[2/1] md:aspect-[21/9] rounded-2xl overflow-hidden mb-16 shadow-2xl border border-border-subtle">
               <img 
                 src={post.coverImage} 
                 alt={post.title} 

@@ -2,7 +2,7 @@
 
 import { Container, Section, Grid } from "@/components/layout";
 import { Heading } from "@/components/ui/Heading";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { RevealOnScroll } from "@/components/ui/motion";
 import { MotionIcon } from "@/components/ui/MotionIcon";
 import { Lock, Zap, Cpu, Code2 } from "lucide-react";
 
@@ -37,28 +37,28 @@ export function TrustSection() {
   return (
     <Section className="py-section-lg bg-bg" id="trust">
       <Container>
-        <ScrollReveal animation="fadeUp" className="text-center mb-16">
+        <RevealOnScroll  className="text-center mb-16">
           <Heading level={2} className="mb-4">Why Trust Infalex</Heading>
-          <p className="text-body-lg text-text-muted max-w-2xl mx-auto">
+          <p className="text-body-lg text-foreground-muted max-w-2xl mx-auto">
             We are engineers building for engineers and professionals. Our entire ecosystem is rooted in strict principles of quality, speed, and privacy.
           </p>
-        </ScrollReveal>
+        </RevealOnScroll>
 
         <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {principles.map((principle, i) => (
-            <ScrollReveal key={i} animation="fadeUp" delay={i * 0.1}>
+            <RevealOnScroll key={i}  delay={i * 0.1}>
               <div className="flex flex-col items-center sm:items-start text-center sm:text-left group cursor-default">
-                <div className="mb-6 w-12 h-12 flex items-center justify-center rounded-xl bg-surface border border-border text-text-muted group-hover:bg-accent/10 group-hover:text-accent group-hover:border-accent/30 transition-all duration-300">
+                <div className="mb-6 w-12 h-12 flex items-center justify-center rounded-xl bg-surface border border-border text-foreground-muted group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/30 transition-all duration-300">
                   <MotionIcon icon={principle.icon} animation={principle.anim as any} className="w-5 h-5" />
                 </div>
-                <Heading level={4} className="mb-3 text-text group-hover:text-text transition-colors">
+                <Heading level={4} className="mb-3 text-foreground group-hover:text-foreground transition-colors">
                   {principle.title}
                 </Heading>
-                <p className="text-body-sm text-text-muted group-hover:text-text transition-colors">
+                <p className="text-body-sm text-foreground-muted group-hover:text-foreground transition-colors">
                   {principle.desc}
                 </p>
               </div>
-            </ScrollReveal>
+            </RevealOnScroll>
           ))}
         </Grid>
       </Container>

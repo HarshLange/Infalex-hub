@@ -28,8 +28,8 @@ export default function BlogIndex() {
         {heroPost && <FeaturedArticle post={heroPost} />}
 
         <div className="flex flex-col gap-8 mb-12">
-          <h3 className="font-heading text-2xl font-semibold text-text tracking-tight">Latest Articles</h3>
-          <div className="w-12 h-1 bg-accent rounded-full mb-2"></div>
+          <h3 className="font-heading text-2xl font-semibold text-foreground tracking-tight">Latest Articles</h3>
+          <div className="w-12 h-1 bg-primary rounded-full mb-2"></div>
         </div>
         
         {gridPosts.length > 0 ? (
@@ -39,7 +39,7 @@ export default function BlogIndex() {
             ))}
           </div>
         ) : (
-          <div className="py-12 text-center text-text-muted">
+          <div className="py-12 text-center text-foreground-muted">
             More articles coming soon.
           </div>
         )}

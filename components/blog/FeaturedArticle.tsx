@@ -12,11 +12,11 @@ export function FeaturedArticle({ post }: { post: BlogPost }) {
   });
 
   return (
-    <div className="relative isolate overflow-hidden bg-surface border border-border2 rounded-3xl px-6 pt-16 shadow-2xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0 mb-16 group hover:border-accent/50 transition-colors duration-500">
-      <div className="absolute -z-10 -top-24 -left-24 w-96 h-96 bg-accent/20 rounded-full blur-[128px] opacity-50" />
+    <div className="relative isolate overflow-hidden bg-surface border border-border-subtle rounded-3xl px-6 pt-16 shadow-2xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0 mb-16 group hover:border-primary/50 transition-colors duration-500">
+      <div className="absolute -z-10 -top-24 -left-24 w-96 h-96 bg-primary/20 rounded-full blur-[128px] opacity-50" />
       
       <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-24 lg:text-left flex flex-col justify-center">
-        <div className="flex items-center justify-center lg:justify-start gap-3 mb-6 text-sm text-text-subtle">
+        <div className="flex items-center justify-center lg:justify-start gap-3 mb-6 text-sm text-foreground-subtle">
           <CategoryBadge categoryId={post.categoryId} />
           <span>•</span>
           <time dateTime={post.publishedAt}>{date}</time>
@@ -24,11 +24,11 @@ export function FeaturedArticle({ post }: { post: BlogPost }) {
           <span>{post.readingTime}</span>
         </div>
 
-        <h2 className="text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-5xl lg:leading-tight">
+        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl lg:leading-tight">
           {post.title}
         </h2>
         
-        <p className="mt-6 text-lg leading-8 text-text-muted">
+        <p className="mt-6 text-lg leading-8 text-foreground-muted">
           {post.excerpt}
         </p>
 
@@ -38,12 +38,12 @@ export function FeaturedArticle({ post }: { post: BlogPost }) {
         
         <div className="mt-auto pb-10 lg:pb-0 z-20 flex justify-center lg:justify-start">
           <Link href={`/blog/${post.slug}`}>
-            <Button size="lg" className="shadow-lg shadow-accent/20">Read Article →</Button>
+            <Button size="lg" className="shadow-lg shadow-primary/20">Read Article →</Button>
           </Link>
         </div>
       </div>
       
-      <div className="relative lg:mt-8 h-80 lg:h-auto lg:w-[45rem] overflow-hidden rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none lg:rounded-br-none border-t border-l border-r lg:border-r-0 border-border2 shadow-2xl">
+      <div className="relative lg:mt-8 h-80 lg:h-auto lg:w-[45rem] overflow-hidden rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none lg:rounded-br-none border-t border-l border-r lg:border-r-0 border-border-subtle shadow-2xl">
         {post.coverImage ? (
           <img
             src={post.coverImage}
@@ -52,7 +52,7 @@ export function FeaturedArticle({ post }: { post: BlogPost }) {
           />
         ) : (
            <div className="absolute inset-0 bg-gradient-to-bl from-accent/30 to-bg flex items-center justify-center">
-             <span className="text-accent/30 font-heading text-8xl font-bold">infa<span className="opacity-70">lex</span></span>
+             <span className="text-primary/30 font-heading text-8xl font-bold">infa<span className="opacity-70">lex</span></span>
            </div>
         )}
       </div>

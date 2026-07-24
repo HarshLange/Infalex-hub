@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   description: "Simple, transparent pricing for Infalex's AI-powered Resume Analyzer. Start free, scale when ready.",
 };
 
+import { PageHeader } from "../../components/layout/PageHeader";
+import { Container, Section } from "../../components/layout";
+
 export default function PricingPage() {
   const plans = [
     {
@@ -50,42 +53,9 @@ export default function PricingPage() {
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:wght@300;400;500;600&display=swap');
         .pp { min-height:100vh; background:#05050a; font-family:'Figtree',sans-serif; color:#f0f0f8; }
 
-        .pp-hero {
-          position:relative; padding:80px 24px 64px; text-align:center;
-          border-bottom:1px solid rgba(255,255,255,0.07); overflow:hidden;
-        }
-        .pp-hero-bg {
-          position:absolute; inset:0; pointer-events:none;
-          background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59,107,255,0.14) 0%, transparent 60%),
-            radial-gradient(ellipse 30% 30% at 85% 75%, rgba(0,212,170,0.06) 0%, transparent 50%);
-        }
-        .pp-hero-grid {
-          position:absolute; inset:0; pointer-events:none;
-          background-image: linear-gradient(rgba(59,107,255,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(59,107,255,0.04) 1px, transparent 1px);
-          background-size:60px 60px;
-          mask-image:radial-gradient(ellipse 70% 60% at 50% 0%, black 0%, transparent 70%);
-        }
-        .pp-hero-inner { position:relative; z-index:1; max-width:680px; margin:0 auto; }
+        .pp-hero-bg, .pp-hero-grid, .pp-hero-inner, .pp-eyebrow, .pp-eyebrow-dot, .pp-title, .pp-subtitle, .pp-hero { display: none; } /* removed custom hero classes */
 
-        .pp-eyebrow {
-          display:inline-flex; align-items:center; gap:8px;
-          font-size:11px; font-weight:600; letter-spacing:0.14em;
-          text-transform:uppercase; color:#00d4aa; margin-bottom:24px;
-        }
-        .pp-eyebrow-dot { width:6px; height:6px; border-radius:50%; background:#00d4aa; animation:pp-pulse 2s infinite; }
-        @keyframes pp-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
 
-        .pp-title {
-          font-family:'Syne',sans-serif;
-          font-size:clamp(40px,7vw,68px); font-weight:800; line-height:0.95;
-          letter-spacing:-0.04em; color:#f0f0f8; margin-bottom:20px;
-        }
-        .pp-title span {
-          background:linear-gradient(135deg,#3b6bff 0%,#00d4aa 100%);
-          -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-        }
-        .pp-subtitle { font-size:17px; font-weight:300; color:rgba(240,240,248,0.5); line-height:1.7; }
 
         .pp-main { max-width:1000px; margin:0 auto; padding:64px 24px 96px; }
 
@@ -174,15 +144,11 @@ export default function PricingPage() {
       `}</style>
 
       <div className="pp">
-        <header className="pp-hero">
-          <div className="pp-hero-bg" />
-          <div className="pp-hero-grid" />
-          <div className="pp-hero-inner">
-            <div className="pp-eyebrow"><span className="pp-eyebrow-dot" />Pricing</div>
-            <h1 className="pp-title">Start free.<br /><span>Scale when ready.</span></h1>
-            <p className="pp-subtitle">No hidden fees. Pay-as-you-go or go unlimited — your choice.</p>
-          </div>
-        </header>
+        <PageHeader 
+          title="Start free. Scale when ready."
+          description="No hidden fees. Pay-as-you-go or go unlimited — your choice."
+          badge="Pricing"
+        />
 
         <main className="pp-main">
           <p className="pp-note">All prices in INR · Payments via Razorpay · Cancel anytime</p>

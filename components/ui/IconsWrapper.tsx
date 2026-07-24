@@ -20,7 +20,7 @@ export const IconsWrapper = React.forwardRef<HTMLDivElement, IconsWrapperProps>(
       <div
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center rounded-xl bg-accent/10 text-accent",
+          "inline-flex items-center justify-center rounded-xl bg-primary/10 text-primary",
           sizes[size],
           className
         )}

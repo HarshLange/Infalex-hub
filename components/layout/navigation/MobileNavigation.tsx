@@ -32,7 +32,7 @@ export function MobileNavigation() {
   return (
     <div className="lg:hidden flex items-center z-50">
       <button
-        className="p-2 text-text-muted hover:text-text focus:outline-none focus:ring-2 focus:ring-accent rounded-md"
+        className="p-2 text-foreground-muted hover:text-foreground focus:outline-none focus:ring-2 focus:ring-accent rounded-md"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle menu"
         aria-expanded={isOpen}
@@ -53,22 +53,22 @@ export function MobileNavigation() {
             aria-label="Mobile navigation"
           >
             <div className="flex flex-col gap-2">
-              <div className="text-xs font-semibold uppercase tracking-widest text-text-subtle mb-2 pl-3">Navigate</div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-foreground-subtle mb-2 pl-3">Navigate</div>
               {navigation.main.map((link) => (
                 <NavigationItem key={link.name} name={link.name} href={link.href} isMobile onClick={() => setIsOpen(false)} />
               ))}
 
-              <div className="text-xs font-semibold uppercase tracking-widest text-text-subtle mt-6 mb-2 pl-3">External</div>
-              <a href={siteConfig.links.blog} target="_blank" rel="noreferrer" className="px-4 py-3 text-lg font-medium text-text-muted hover:bg-surface-hover hover:text-text rounded-xl transition-colors" onClick={() => setIsOpen(false)}>
+              <div className="text-xs font-semibold uppercase tracking-widest text-foreground-subtle mt-6 mb-2 pl-3">External</div>
+              <a href={siteConfig.links.blog} target="_blank" rel="noreferrer" className="px-4 py-3 text-lg font-medium text-foreground-muted hover:bg-surface-hover hover:text-foreground rounded-xl transition-colors" onClick={() => setIsOpen(false)}>
                 Blog ↗
               </a>
-              <a href={siteConfig.links.tools} target="_blank" rel="noreferrer" className="px-4 py-3 text-lg font-medium text-text-muted hover:bg-surface-hover hover:text-text rounded-xl transition-colors" onClick={() => setIsOpen(false)}>
+              <a href={siteConfig.links.tools} target="_blank" rel="noreferrer" className="px-4 py-3 text-lg font-medium text-foreground-muted hover:bg-surface-hover hover:text-foreground rounded-xl transition-colors" onClick={() => setIsOpen(false)}>
                 Tools ↗
               </a>
 
               <Button 
-                variant="default" 
-                size="lg" 
+                variant="primary"
+                size="lg"
                 className="mt-8 py-6 w-full shadow-lg"
                 onClick={() => { setIsOpen(false); window.open(siteConfig.links.resumetra, '_blank'); }}
               >

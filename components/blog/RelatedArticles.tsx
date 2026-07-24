@@ -18,7 +18,7 @@ export function RelatedArticles({ currentSlug, categoryId }: RelatedArticlesProp
   return (
     <section className="py-24 bg-surface/50 border-t border-border">
       <Container>
-        <h2 className="text-2xl font-bold font-heading mb-10 text-text">Related Reading</h2>
+        <h2 className="text-2xl font-bold font-heading mb-10 text-foreground">Related Reading</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {relatedPosts.map((related) => (
             <ArticleCard key={related.slug} post={related} />

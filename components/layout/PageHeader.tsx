@@ -2,28 +2,57 @@ import * as React from "react"
 import { cn } from "../../lib/utils"
 import { Container } from "./Container"
 import { Heading } from "../ui/Heading"
+import { SlideUp, RevealOnScroll } from "../ui/motion"
 
 export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   title: React.ReactNode;
-  description?: string;
+  description?: React.ReactNode;
   badge?: string;
   align?: "left" | "center";
+  children?: React.ReactNode;
 }
 
 /**
- * Reusable PageHeader for sub-routes like /blog, /pricing, /about
+ * Unified PageHeader for all internal routes (/blog, /pricing, /about, /legal)
+ * Standardizes typography, spacing, and animations to maintain enterprise consistency.
  */
-export function PageHeader({ title, description, badge, align = "left", className, ...props }: PageHeaderProps) {
+export function PageHeader({ title, description, badge, align = "center", className, children, ...props }: PageHeaderProps) {
   return (
-    <header className={cn("pt-32 pb-16 bg-bg border-b border-border", className)} {...props}>
-      <Container className={cn("flex flex-col gap-4", align === "center" ? "items-center text-center" : "items-start text-left")}>
+    <header className={cn("pt-40 pb-20 bg-bg relative overflow-hidden", className)} {...props}>
+      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
+      <Container className={cn("relative z-10 flex flex-col gap-5", align === "center" ? "items-center text-center" : "items-start text-left")}>
         {badge && (
-          <span className="text-[11px] font-semibold tracking-wider uppercase bg-accent/10 text-accent border border-accent/20 px-3 py-1 rounded-full font-sans mb-2">
-            {badge}
-          </span>
+          <SlideUp delay={0.1}>
+            <span className="inline-flex items-center text-[12px] font-semibold tracking-widest uppercase bg-primary/10 text-primary border border-primary/20 px-3.5 py-1.5 rounded-full font-sans mb-4">
+              {badge}
+            </span>
+          </SlideUp>
         )}
-        <Heading level={1} className="text-4xl md:text-5xl">{title}</Heading>
-        {description && <p className={cn("text-lg text-text-muted", align === "center" ? "max-w-2xl" : "max-w-3xl")}>{description}</p>}
+        
+        <SlideUp delay={0.2}>
+          <Heading level={1} className="text-4xl md:text-5xl lg:text-6xl tracking-tight text-foreground font-semibold max-w-4xl text-balance">
+            {title}
+          </Heading>
+        </SlideUp>
+
+        {description && (
+          <SlideUp delay={0.3}>
+            <p className={cn(
+              "text-lg md:text-xl text-foreground-muted leading-relaxed text-balance", 
+              align === "center" ? "max-w-2xl mx-auto" : "max-w-3xl"
+            )}>
+              {description}
+            </p>
+          </SlideUp>
+        )}
+
+        {children && (
+          <SlideUp delay={0.4}>
+            <div className={cn("mt-6 flex justify-center w-full", align === "left" && "justify-start")}>
+              {children}
+            </div>
+          </SlideUp>
+        )}
       </Container>
     </header>
   )

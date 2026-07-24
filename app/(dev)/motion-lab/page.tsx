@@ -20,7 +20,7 @@ export default function MotionLabPage() {
   }
 
   return (
-    <main className="min-h-screen bg-bg text-text pt-24 pb-12">
+    <main className="min-h-screen bg-bg text-foreground pt-24 pb-12">
       <Container>
         <Heading level={1} className="mb-12">Motion Lab</Heading>
         
@@ -30,7 +30,7 @@ export default function MotionLabPage() {
             variants={variants.fade}
             initial="hidden"
             animate="visible"
-            className="w-32 h-32 bg-accent/20 border border-accent rounded-xl flex items-center justify-center"
+            className="w-32 h-32 bg-primary/20 border border-primary rounded-xl flex items-center justify-center"
           >
             Fade
           </motion.div>
