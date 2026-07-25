@@ -21,6 +21,10 @@ export const defaultMetadata: Metadata = {
     siteName: siteConfig.name,
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Infalex — AI-Powered Tools for the Future' }],
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,

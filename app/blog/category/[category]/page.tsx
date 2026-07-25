@@ -6,10 +6,15 @@ import { Page, PageHeader, Container } from "../../../../components/layout";
 import { ArticleCard } from "../../../../components/blog/ArticleCard";
 
 export async function generateStaticParams() {
-  return Object.keys(categories).map((category) => ({
+  const posts = getAllPosts();
+  const categories = Array.from(new Set(posts.map((post) => post.categoryId)));
+
+  return categories.map((category) => ({
     category,
   }));
 }
+
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
   const { category: categoryId } = await params;
