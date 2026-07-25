@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { siteConfig } from '@/config/site';
 import { getAllPosts } from '@/lib/blog/api';
+import { getAllProductConfigs } from '@/lib/products/api';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url; 
@@ -42,5 +43,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticSitemap, ...blogSitemap, ...categorySitemap];
+  const productConfigs = getAllProductConfigs();
+  const productSitemap: MetadataRoute.Sitemap = productConfigs.map((config) => ({
+    url: `${baseUrl}/products/${config.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticSitemap, ...blogSitemap, ...categorySitemap, ...productSitemap];
 }

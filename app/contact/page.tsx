@@ -11,6 +11,9 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subject = `Contact Form Submission from ${formState.name}`;
+    const body = `Name: ${formState.name}\nEmail: ${formState.email}\n\nMessage:\n${formState.message}`;
+    window.location.href = `mailto:support@infalex.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
 
@@ -83,8 +86,8 @@ export default function ContactPage() {
                   <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="font-heading text-2xl font-bold text-foreground">Message sent!</h3>
-                  <p className="text-foreground-muted max-w-sm">We'll get back to you within 1–2 business days at your email address.</p>
+                  <h3 className="font-heading text-2xl font-bold text-foreground">Email client opened</h3>
+                  <p className="text-foreground-muted max-w-sm">Your email client has been opened. Please send the pre-filled email to complete your message.</p>
                 </div>
               ) : (
                 <>

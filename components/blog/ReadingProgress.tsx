@@ -1,8 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 export function ReadingProgress() {
   const [progress, setProgress] = useState(0);
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 20);
+  });
 
   useEffect(() => {
     const updateProgress = () => {
@@ -18,11 +25,16 @@ export function ReadingProgress() {
   }, []);
 
   return (
-    <div className="fixed top-[76px] left-0 w-full h-1 z-[90] bg-transparent">
+    <motion.div 
+      className="fixed left-0 w-full h-1 z-[90] bg-transparent"
+      initial={{ top: "76px" }}
+      animate={{ top: isScrolled ? "64px" : "76px" }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+    >
       <div 
         className="h-full bg-primary transition-all duration-150 ease-out" 
         style={{ width: `${progress}%` }} 
       />
-    </div>
+    </motion.div>
   );
 }

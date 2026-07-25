@@ -194,6 +194,28 @@ export default function PricingPage() {
           </div>
         </main>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { q: "What is a credit?", a: "1 credit = 1 resume scan or 1 cover letter. Credits don't expire and can be used for any paid feature on Resumetra." },
+              { q: "Can I try before paying?", a: "Yes. The Free plan gives you 5 resume scans per month with no credit card required. You can experience the core features before upgrading." },
+              { q: "What payment methods are accepted?", a: "We use Razorpay which supports UPI, credit/debit cards, net banking, and wallets. All transactions are secure." },
+              { q: "Is there a refund policy?", a: "Because our services involve real-time AI computation, all sales are generally final. We review technical failures case by case. See our Refund Policy for details." },
+            ].map((faq) => ({
+              "@type": "Question",
+              "name": faq.q,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.a,
+              },
+            })),
+          }),
+        }}
+      />
     </>
   );
 }
